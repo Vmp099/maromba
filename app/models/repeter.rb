@@ -1,0 +1,2 @@
+class Repeter < ApplicationRecord
+end

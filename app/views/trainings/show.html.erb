@@ -1,0 +1,16 @@
+<table class="table">
+  <thead>
+    <th>Frango:</th>
+    <th>Exercício:</th>
+    <th>Peso:</th>
+  </thead>
+  <tbody>
+    <% @training.each do |t| %>
+    <tr>
+      <td><%= current_user.username %></td>
+      <td><%= t.name_training %></td>
+      <td><%= t.weigth %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
