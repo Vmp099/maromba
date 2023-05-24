@@ -7,7 +7,7 @@
   </thead>
   <tbody>
     <% @trainings.each do |t| %>
-    <%  @user_name = User.find(t.id) %>
+    <%  @user_name = User.find(t.user_id) %>
     <tr>
       <td><%= @user_name.username %></td>
       <td><%= t.name_training %></td>

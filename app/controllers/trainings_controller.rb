@@ -1,7 +1,5 @@
 class TrainingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :new_repeter_path, only[:new]
-
   def index
     @trainings = Training.all
   end
@@ -11,7 +9,6 @@ class TrainingsController < ApplicationController
   end
 
   def new
-
   end
 
   def edit
@@ -22,7 +19,7 @@ class TrainingsController < ApplicationController
 
     respond_to do |format|
       if @training.save
-        format.html { redirect_to trainings_url, notice: "Treino salvo com sucesso!" }
+        format.html { redirect_to trainings_looper_url}
         format.json { render :show, status: :created, location: @training }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -30,12 +27,14 @@ class TrainingsController < ApplicationController
       end
     end
   end
+  def looper
+  end
 
   # PATCH/PUT /companies/1 or /companies/1.json
   def update
     respond_to do |format|
       if @training.update(training_params)
-        format.html { redirect_to training_url(@training), notice: "Treino modificado com sucesso!" }
+        format.html { redirect_to root_path, notice: "Treino modificado com sucesso!" }
         format.json { render :show, status: :ok, location: @training }
       else
         format.html { render :edit, status: :unprocessable_entity }

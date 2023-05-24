@@ -1,2 +1,0 @@
-class Repeter < ApplicationRecord
-end

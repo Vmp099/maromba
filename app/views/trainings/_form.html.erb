@@ -1,6 +1,4 @@
 <%= form_for :training, url: trainings_path do |form| %>
-   <%@i = 2%>
-   <% @i.times do %>
     <div class="field">
           <%= form.label :name_training, "Nome do treino", class: "label" %>
       <%= form.text_field :name_training, class: "input" %>
@@ -12,8 +10,6 @@
       <%= form.number_field :weigth, step: :any %>
     </div>
 
-
-  <%end%>
     <div class="field">
       <%= form.submit "Salvar", class: "button is-link" %>
     </div>

@@ -3,8 +3,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions', registrations: 'users/registrations'
   }
   root 'home#index'
-  get '/trainings/number_of_trainings'
-  post '/trainings/number_of_trainings'
+  get 'trainings/looper'
 
   resources :trainings
 end
