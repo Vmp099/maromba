@@ -1,0 +1,40 @@
+<nav class="navbar is-spaced has-shadow" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a href="/" ><%= image_tag "brazil_flag.png", class: "image", size: 50 %></a>
+        <a class="navbar-item" href="/"></a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        </a>
+        <% if !current_user.nil?%>
+        <a class="navbar-item">Usuário Logado: <%= current_user.username %></a>
+        <% else %>
+        <a class="navbar-item">Usuário Logado: Nenhum</a>
+        <% end %>
+    </div>
+
+    <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-end">
+            <%= link_to "Adicionar Treino", new_training_path, class: "navbar-item" %>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">Tabelas</a>
+                <div class="navbar-dropdown">
+                    <% if !current_user.nil? %>
+                    <%=   link_to "Tabela por usuário",training_path(current_user.id), class: "navbar-item" %>
+                    <% end %>
+                    <%= link_to "Tabela de Evolução", trainings_path , class: "navbar-item" %>
+                </div>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">Settings</a>
+                <div class="navbar-dropdown">
+                    <%= link_to "Login", new_user_session_path, class: "navbar-item" %>
+                    <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "button navbar-item" %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</nav>
