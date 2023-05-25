@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get 'trainings/looper'
 
   resources :trainings
+  resources :weigths
 end

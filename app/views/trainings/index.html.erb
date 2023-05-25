@@ -9,6 +9,7 @@
     <% @trainings.each do |t| %>
     <%  @user_name = User.find(t.user_id) %>
     <tr>
+      <%= link_to "Alterar", new_training_path(t.id)%>
       <td><%= @user_name.username %></td>
       <td><%= t.name_training %></td>
       <td><%= t.weigth %></td>
