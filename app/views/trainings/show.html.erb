@@ -3,6 +3,8 @@
     <th>Frango:</th>
     <th>Exercício:</th>
     <th>Peso:</th>
+    <th>Editar:</th>
+    <th>Adicionar Peso:</th>
   </thead>
   <tbody>
     <% @training.each do |t| %>
@@ -10,6 +12,7 @@
       <td><%= current_user.username %></td>
       <td><%= t.name_training %></td>
       <td><%= t.weigth %></td>
+      <td> <%= link_to "Editar Peso", edit_training_url(t.id), class: "is-pulled-right" %></td>
     </tr>
     <% end %>
   </tbody>

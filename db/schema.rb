@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_23_124907) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_26_161251) do
+  create_table "repeters", force: :cascade do |t|
+    t.integer "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "trainings", force: :cascade do |t|
     t.string "name_training"
     t.integer "user_id", null: false
@@ -34,5 +40,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_23_124907) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "weigths", force: :cascade do |t|
+    t.float "weigth"
+    t.integer "training_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["training_id"], name: "index_weigths_on_training_id"
+  end
+
   add_foreign_key "trainings", "users"
+  add_foreign_key "weigths", "trainings"
 end

@@ -3,7 +3,10 @@
   <thead>
     <th>Frango:</th>
     <th>Exercício:</th>
-    <th>Peso:</th>
+    <th>Peso Novo:</th>
+    <% @current_weigth.each do %>
+    <th>Peso Anterior:</th>
+    <% end %>
   </thead>
   <tbody>
     <% @trainings.each do |t| %>
@@ -12,6 +15,9 @@
       <td><%= @user_name.username %></td>
       <td><%= t.name_training %></td>
       <td><%= t.weigth %></td>
+      <% @current_weigth.each do |w| %>
+      <td><%= w.weigth %></td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>

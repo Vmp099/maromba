@@ -2,6 +2,7 @@ class TrainingsController < ApplicationController
   before_action :authenticate_user!
   def index
     @trainings = Training.all
+    @current_weigth = Weigth.all
   end
 
   def show
@@ -12,11 +13,11 @@ class TrainingsController < ApplicationController
   end
 
   def edit
+    @training  = Training.find(params[:id])
   end
 
   def create
     @training = Training.new(training_params)
-
     respond_to do |format|
       if @training.save
         format.html { redirect_to trainings_looper_url}
@@ -27,11 +28,10 @@ class TrainingsController < ApplicationController
       end
     end
   end
-  def looper
-  end
 
   # PATCH/PUT /companies/1 or /companies/1.json
   def update
+    @training = Training.find(params[:id])
     respond_to do |format|
       if @training.update(training_params)
         format.html { redirect_to root_path, notice: "Treino modificado com sucesso!" }
@@ -54,9 +54,6 @@ class TrainingsController < ApplicationController
   end
 
   private
-    def number_of_trainings
-      @number = params(:number)
-    end
 
     # Only allow a list of trusted parameters through.
     def training_params
