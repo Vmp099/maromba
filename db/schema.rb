@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_26_161251) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_29_120425) do
+  create_table "current_measures", force: :cascade do |t|
+    t.float "measure_new"
+    t.integer "measure_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["measure_id"], name: "index_current_measures_on_measure_id"
+  end
+
+  create_table "measures", force: :cascade do |t|
+    t.float "new_measure"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name_muscle"
+    t.index ["user_id"], name: "index_measures_on_user_id"
+  end
+
   create_table "repeters", force: :cascade do |t|
     t.integer "count"
     t.datetime "created_at", null: false
@@ -48,6 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_26_161251) do
     t.index ["training_id"], name: "index_weigths_on_training_id"
   end
 
+  add_foreign_key "current_measures", "measures"
+  add_foreign_key "measures", "users"
   add_foreign_key "trainings", "users"
   add_foreign_key "weigths", "trainings"
 end

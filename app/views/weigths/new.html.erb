@@ -1,9 +1,8 @@
-<%= form_for :training, url: weigths_path do |form| %>
+<%= form_for :weigth, url: weigths_path do |form| %>
     <div class="field">
         <%= form.label :training_id, "Treino:", class: "label" %>
         <%= form.select(:training_id, Training.all.map { |v| [ v.name_training, v.id ] }) %>
     </div>
-    <%= form.hidden_field :user_id, value: current_user.id %>
 
     <div class="field">
       <%= form.label :weigth, "Peso", class: "label" %>

@@ -1,0 +1,14 @@
+<%= form_for :measure, url: current_measures_path do |form| %>
+    <div class="field">
+        <%= form.label :measure_id, "Área:", class: "label" %>
+        <%= form.select(:measure_id, Measure.all.map { |v| [ v.name_muscle, v.id ] }) %>
+    </div>
+
+    <div class="field">
+      <%= form.label :new_measure, "Medida:", class: "label" %>
+      <%= form.number_field :new_measure, step: :any %>
+    </div>
+    <div class="field">
+      <%= form.submit "Salvar", class: "button is-link" %>
+    </div>
+<% end %>

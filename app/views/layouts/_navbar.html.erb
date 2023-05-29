@@ -17,8 +17,10 @@
 
     <div id="navbarMenu" class="navbar-menu">
         <div class="navbar-end">
+            <%= link_to "Criar Tabela de Medidas", new_measure_path , class: "navbar-item" %>
+            <%= link_to "Adicionar Medida", new_current_measure_path, class: "navbra-item" %>
             <%= link_to "Adicionar Treino", new_training_path, class: "navbar-item" %>
-            <%= link_to "Adicionar Peso", new_weigth_path, class: "navbar-item" %>
+            <%= link_to "Adicionar Peso"  , new_weigth_path  , class: "navbar-item" %>
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">Tabelas</a>
                 <div class="navbar-dropdown">
@@ -26,6 +28,7 @@
                     <%=   link_to "Tabela por usuário",training_path(current_user.id), class: "navbar-item" %>
                     <% end %>
                     <%= link_to "Tabela de Evolução", trainings_path , class: "navbar-item" %>
+                    <%=   link_to "Tabela de Medidas",measures_path, class: "navbar-item" %>
                 </div>
             </div>
             <div class="navbar-item has-dropdown is-hoverable">

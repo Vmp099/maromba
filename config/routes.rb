@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   resources :trainings
   resources :weigths
+  resources :measures
+  resources :current_measures
 end

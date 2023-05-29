@@ -3,12 +3,13 @@ class WeigthsController < ApplicationController
 
   end
   def create
-    @weigth = Training.new(training_params)
-    @current_weigth = Training.last.weigth
-    @new_weigth = Weight.new(weigth: @current_weigth)
+    @current_weigth = Training.find(training_find["training_id"])
+    @weigth = Training.where(id: @current_weigth).update(training_params)
+    @new_weigth = Weigth.new(weigth: @current_weigth.weigth , training_id: training_find["training_id"])
+
 
     respond_to do |format|
-      if @weigth.save
+      if @new_weigth.save
         format.html { redirect_to trainings_url}
         format.json { render :show, status: :created, location: @weigth }
       else
@@ -19,8 +20,11 @@ class WeigthsController < ApplicationController
   end
 
   private
+  def training_find
+    params.require(:weigth).permit( :training_id)
+  end
   def training_params
-    params.require(:weigth).permit( :user_id, :name_training, :weigth)
+    params.require(:weigth).permit( :weigth)
   end
 
 end

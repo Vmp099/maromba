@@ -1,0 +1,24 @@
+<h2 class="title is-4">Treinos</h2>
+<table class="table">
+  <thead>
+    <th>Frango:</th>
+    <th>Área:</th>
+    <th>Medida Atual:</th>
+    <% @current_measure.each do %>
+    <th>Medidas Anteriores:</th>
+    <% end %>
+  </thead>
+  <tbody>
+    <% @measures.each do |m| %>
+    <%  @user_name = User.find(m.user_id) %>
+    <tr>
+      <td><%= @user_name.username %></td>
+      <td><%= m.name_muscle %></td>
+      <td><%= m.new_measure %></td>
+      <% @current_measure.each do |w| %>
+      <td><%= w.measure_new %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
