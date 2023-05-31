@@ -4,7 +4,9 @@
     <th>Exercício:</th>
     <th>Peso:</th>
     <th>Editar:</th>
-    <th>Adicionar Peso:</th>
+    <% @current_weigth.each do %>
+    <th>Pesos Anteriores:</th>
+    <% end %>
   </thead>
   <tbody>
     <% @training.each do |t| %>
@@ -13,6 +15,9 @@
       <td><%= t.name_training %></td>
       <td><%= t.weigth %></td>
       <td> <%= link_to "Editar Peso", edit_training_url(t.id), class: "is-pulled-right" %></td>
+      <% @current_weigth.each do |w| %>
+      <td><%= w.weigth %></td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>

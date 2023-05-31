@@ -7,6 +7,7 @@ class TrainingsController < ApplicationController
 
   def show
     @training = Training.where(user_id: current_user).map
+    @current_weigth = Weigth.order(created_at: :desc)
   end
 
   def new
