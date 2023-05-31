@@ -11,9 +11,12 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_05_29_120425) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "current_measures", force: :cascade do |t|
     t.float "measure_new"
-    t.integer "measure_id", null: false
+    t.bigint "measure_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["measure_id"], name: "index_current_measures_on_measure_id"
@@ -21,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_29_120425) do
 
   create_table "measures", force: :cascade do |t|
     t.float "new_measure"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name_muscle"
@@ -36,7 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_29_120425) do
 
   create_table "trainings", force: :cascade do |t|
     t.string "name_training"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "weigth"
@@ -59,7 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_29_120425) do
 
   create_table "weigths", force: :cascade do |t|
     t.float "weigth"
-    t.integer "training_id", null: false
+    t.bigint "training_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["training_id"], name: "index_weigths_on_training_id"
