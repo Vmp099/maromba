@@ -44,11 +44,16 @@ class TrainingsController < ApplicationController
     end
   end
 
+  def delete
+    @training = Training.find(params[:id])
+  end
   # DELETE /companies/1 or /companies/1.json
   def destroy
-    @training.destroy
-
+    @training = Training.find(params[:id])
+    @weigth = Weigth.find_by(training_id: @training.id)
     respond_to do |format|
+      @weigth.destroy
+      @training.destroy
       format.html { redirect_to trainings_url, notice: "Treino deletado com sucesso!" }
       format.json { head :no_content }
     end

@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   }
   root 'home#index'
   get 'trainings/looper'
+  delete 'trainings/:id/delete' => 'trainings#destroy', as: 'trainings_delete'
+  get '/trainings/:id/delete' => 'trainings#destroy'
+  delete 'measures/:id/delete' => 'measures#destroy', as: 'measures_delete'
+  get '/measures/:id/delete' => 'measures#destroy'
+
 
   resources :trainings
   resources :weigths

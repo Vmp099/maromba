@@ -7,6 +7,7 @@
     <% @current_measure.each do %>
     <th>Medidas Anteriores:</th>
     <% end %>
+    <th>Alterar Ultima Medida:</th>
   </thead>
   <tbody>
     <% @measures.each do |m| %>
@@ -17,6 +18,9 @@
       <td><%= m.new_measure %></td>
       <% @current_measure.each do |w| %>
       <td><%= w.measure_new %></td>
+      <% end %>
+      <% if @user_name == current_user %>
+      <td><%= link_to "Alterar Medida", root_path %>
       <% end %>
     </tr>
     <% end %>

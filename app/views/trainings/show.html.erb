@@ -3,10 +3,11 @@
     <th>Frango:</th>
     <th>Exercício:</th>
     <th>Peso:</th>
-    <th>Editar:</th>
     <% @current_weigth.each do %>
     <th>Pesos Anteriores:</th>
     <% end %>
+    <th>Editar:</th>
+    <th>Deletar:</th>
   </thead>
   <tbody>
     <% @training.each do |t| %>
@@ -14,10 +15,11 @@
       <td><%= current_user.username %></td>
       <td><%= t.name_training %></td>
       <td><%= t.weigth %></td>
-      <td> <%= link_to "Editar Peso", edit_training_url(t.id), class: "is-pulled-right" %></td>
       <% @current_weigth.each do |w| %>
       <td><%= w.weigth %></td>
       <% end %>
+      <td> <%= link_to "Editar Peso", edit_training_url(t.id), class: "is-pulled-right" %></td>
+      <td> <%= link_to 'Delete', trainings_delete_path, method: :delete %> </td>
     </tr>
     <% end %>
   </tbody>

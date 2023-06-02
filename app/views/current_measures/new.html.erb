@@ -1,7 +1,7 @@
 <%= form_for :measure, url: current_measures_path do |form| %>
     <div class="field">
         <%= form.label :measure_id, "Área:", class: "label" %>
-        <%= form.select(:measure_id, Measure.all.map { |v| [ v.name_muscle, v.id ] }) %>
+        <%= form.select(:measure_id, Measure.where(user_id: current_user).map { |v| [ v.name_muscle, v.id ] }) %>
     </div>
 
     <div class="field">
