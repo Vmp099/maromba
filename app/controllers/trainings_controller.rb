@@ -1,7 +1,7 @@
 class TrainingsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @trainings = Training.all
+    @trainings = Training.order(user_id: :desc)
     @current_weigth = Weigth.order(created_at: :desc)
   end
 

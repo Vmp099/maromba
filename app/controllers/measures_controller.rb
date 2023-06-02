@@ -1,7 +1,7 @@
 class MeasuresController < ApplicationController
 
   def index
-    @measures = Measure.all
+    @measures = Measure.order(user_id: :desc)
     @current_measure = CurrentMeasure.order(created_at: :desc)
   end
 
