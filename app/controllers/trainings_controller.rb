@@ -34,7 +34,6 @@ class TrainingsController < ApplicationController
     @i = Routine.find(training_params[:routine_id]).routine_select.length
     count = 0
     @i.times do
-      byebug
       @training_name = training_params[:name_training][count]
       @training_weigth = training_params[:weigth][count]
       @training = Training.new(user_id: training_params[:user_id], routine_id: training_params[:routine_id], name_training: @training_name, weigth: @training_weigth)

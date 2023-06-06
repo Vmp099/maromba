@@ -3,7 +3,6 @@ class CurrentMeasuresController < ApplicationController
 
   end
   def create
-    byebug
     @current_measure = Measure.find(measure_find["measure_id"])
     @measure = Measure.where(id: @current_measure.id).update(measure_params)
     @new_measure = CurrentMeasure.new(measure_new: @current_measure.new_measure , measure_id: measure_find["measure_id"])
