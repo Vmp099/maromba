@@ -1,15 +1,1 @@
-<%training = @training%>
-<%= form_with(model: training) do |form| %>
-    <div class="field">
-      <%= form.label :name_training, "Nome", class: "label" %>
-      <%= form.text_field :name_training, step: :any %>
-    </div>
-    <div class="field">
-      <%= form.label :weigth, "Peso", class: "label" %>
-      <%= form.number_field :weigth, step: :any %>
-    </div>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-    <div class="field">
-      <%= form.submit "Salvar", class: "button is-link" %>
-    </div>
-<% end %>
+<%= render "form", training: @training%>

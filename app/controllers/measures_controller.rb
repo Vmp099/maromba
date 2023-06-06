@@ -9,6 +9,7 @@ class MeasuresController < ApplicationController
 
   end
   def create
+    byebug
     @measure = Measure.new(measure_params)
 
     respond_to do |format|

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/trainings/:id/delete' => 'trainings#destroy'
   delete 'measures/:id/delete' => 'measures#destroy', as: 'measures_delete'
   get '/measures/:id/delete' => 'measures#destroy'
+  get 'trainings/routine'
+  get 'trainings/:user_id/user' => 'trainings#user', as: 'training_user'
 
 
   resources :trainings
