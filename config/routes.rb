@@ -10,10 +10,12 @@ Rails.application.routes.draw do
   get '/measures/:id/delete' => 'measures#destroy'
   get 'trainings/routine'
   get 'trainings/:user_id/user' => 'trainings#user', as: 'training_user'
+  get 'trainings/routine' => 'trainings#routine', as: 'training_routine'
 
 
   resources :trainings
   resources :weigths
   resources :measures
   resources :current_measures
+  resources :routines
 end

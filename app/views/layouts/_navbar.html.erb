@@ -21,7 +21,7 @@
         <div class="navbar-end">
             <%= link_to "Criar Tabela de Medidas", new_measure_path , class: "navbar-item" %>
             <%= link_to "Adicionar Medida", new_current_measure_path, class: "navbra-item" %>
-            <%= link_to "Adicionar Rotina", new_training_path, class: "navbar-item" %>
+            <%= link_to "Adicionar Rotina", training_routine_path, class: "navbar-item" %>
             <%= link_to "Adicionar Peso"  , new_weigth_path  , class: "navbar-item" %>
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">Tabelas</a>
@@ -36,6 +36,11 @@
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">Settings</a>
                 <div class="navbar-dropdown">
+                    <% if !current_user.nil? %>
+                    <%   if current_user.email.include? "@admin.com"%>
+                    <%=     link_to "Adicionar Rotina", new_routine_path, class: "navbar-item"  %>
+                    <%   end %>
+                    <% end %>
                     <%= link_to "Login", new_user_session_path, class: "navbar-item" %>
                     <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "button navbar-item" %>
                     <%= phrase[i] %>
