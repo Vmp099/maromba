@@ -30,7 +30,6 @@ class TrainingsController < ApplicationController
   end
 
   def create
-    byebug
     @i = Routine.find(training_params[:routine_id]).routine_select.length
     count = 0
     @i.times do
