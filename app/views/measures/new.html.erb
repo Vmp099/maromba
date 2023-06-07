@@ -1,14 +1,1 @@
-<%= form_for :measure, url: measures_path do |form| %>
-    <div class="field">
-      <%= form.label :name_muscle, "Área", class: "label" %>
-      <%= form.text_field :name_muscle, step: :any %>
-    </div>
-    <div class="field">
-      <%= form.label :new_measure, "Medida", class: "label" %>
-      <%= form.number_field :new_measure, step: :any %>
-    </div>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-    <div class="field">
-      <%= form.submit "Salvar", class: "button is-link" %>
-    </div>
-<% end %>
+<%= render "form", measure: @measure %>

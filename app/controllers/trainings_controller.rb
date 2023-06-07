@@ -52,12 +52,12 @@ class TrainingsController < ApplicationController
 
   end
 
-  # PATCH/PUT /companies/1 or /companies/1.json
   def update
+    byebug
     @training = Training.find(params[:id])
     respond_to do |format|
-      if @training.update(training_params)
-        format.html { redirect_to root_path, notice: "Treino modificado com sucesso!" }
+      if @training.update(edit_params)
+        format.html { redirect_to training_path(current_user.id), notice: "Treino modificado com sucesso!" }
         format.json { render :show, status: :ok, location: @training }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -86,6 +86,9 @@ class TrainingsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def training_params
       params.require(:training).permit( :user_id, :routine_id, :weigth => [], :name_training => [])
+    end
+    def edit_params
+      params.require(:training).permit( :user_id, :routine_id, :weigth, :name_training)
     end
 
 end

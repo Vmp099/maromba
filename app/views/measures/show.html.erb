@@ -1,0 +1,27 @@
+<h2 class="title is-4">Treinos</h2>
+<table class="table">
+  <thead>
+    <th>Frango:</th>
+    <th>Área:</th>
+    <th>Medida Atual:</th>
+    <% @current_measure.each do %>
+    <th>Medidas Anteriores:</th>
+    <% end %>
+    <th>Editar:</th>
+    <th>Deletar:</th>
+  </thead>
+  <tbody>
+    <% @measures.each do |m| %>
+    <tr>
+      <td><%= current_user.username %></td>
+      <td><%= m.name_muscle %></td>
+      <td><%= m.new_measure %></td>
+      <% @current_measure.each do |w| %>
+      <td><%= w.measure_new %></td>
+      <% end %>
+      <td> <%= link_to "Editar Peso", edit_measure_url(m.id), class: "is-pulled-right" %></td>
+      <td> <%= link_to 'Delete', measures_delete_path(m.id), method: :delete %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

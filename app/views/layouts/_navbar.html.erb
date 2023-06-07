@@ -1,52 +1,79 @@
-<nav class="navbar is-spaced has-shadow" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a href="/" ><%= image_tag "brazil_flag.png", class: "image", size: 50 %></a>
-        <a class="navbar-item" href="/"></a>
-
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        </a>
-        <% if !current_user.nil?%>
-        <a class="navbar-item">Usuário Logado: <%= current_user.username %></a>
-        <% else %>
-        <a class="navbar-item">Usuário Logado: Nenhum</a>
-        <% end %>
-    </div>
-    <% phrase = {1 => "TESTE", 2 => "NANDO GAY" }  %>
-    <% i = rand(1..2) %>
-
-    <div id="navbarMenu" class="navbar-menu">
-        <div class="navbar-end">
-            <%= link_to "Criar Tabela de Medidas", new_measure_path , class: "navbar-item" %>
-            <%= link_to "Adicionar Medida", new_current_measure_path, class: "navbra-item" %>
-            <%= link_to "Adicionar Rotina", training_routine_path, class: "navbar-item" %>
-            <%= link_to "Adicionar Peso"  , new_weigth_path  , class: "navbar-item" %>
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">Tabelas</a>
-                <div class="navbar-dropdown">
-                    <% if !current_user.nil? %>
-                    <%=   link_to "Tabela por usuário",training_user_path(current_user.id), class: "navbar-item" %>
-                    <% end %>
-                    <%= link_to "Tabela de Evolução", trainings_path , class: "navbar-item" %>
-                    <%=   link_to "Tabela de Medidas",measures_path, class: "navbar-item" %>
+<div class="navbar">
+    <nav class="nav">
+        <ul>
+            <li>
+                <div>
+                    <a href="/" class="image_logo" ><%= image_tag "brazil_flag.png", class: "image_logo"%></a>
                 </div>
-            </div>
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">Settings</a>
-                <div class="navbar-dropdown">
-                    <% if !current_user.nil? %>
-                    <%   if current_user.email.include? "@admin.com"%>
-                    <%=     link_to "Adicionar Rotina", new_routine_path, class: "navbar-item"  %>
-                    <%   end %>
-                    <% end %>
-                    <%= link_to "Login", new_user_session_path, class: "navbar-item" %>
-                    <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "button navbar-item" %>
-                    <%= phrase[i] %>
+            </li>
+            <li>
+                <% if !current_user.nil?%>
+                    <a class="navbar-item">Usuário Logado: <%= current_user.username %></a>
+                <% else %>
+                    <a class="navbar-item">Usuário Logado: Nenhum</a>
+                <% end %>
+            </li>
+        </ul>
+        <ul>
+            <li><a>TREINOS</a>
+                <div class="submenu">
+                    <ul>
+                        <li class="hover-sub"><a>EVOLUÇÃO</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <% if !current_user.nil? %>
+                                    <li><%= link_to "TREINOS P/ USUÁRIO",training_user_path(current_user.id)%></li>
+                                    <% end %>
+                                    <li><%= link_to "TREINOS", trainings_path %></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><%= link_to "REGISTRAR TREINO", training_routine_path %></li>
+                        <li><%= link_to "ADICIONAR PESO"  , new_weigth_path %></li>
+                    </ul>
                 </div>
-            </div>
-        </div>
-    </div>
-
-</nav>
+            </li>
+            <li><a>MEDIDAS</a>
+                <div class="submenu">
+                    <ul>
+                        <li class="hover-sub"><a>EVOLUÇÃO</a>
+                            <div class="submenu2">
+                                <ul>
+                                    <% if !current_user.nil? %>
+                                    <li><%= link_to "MEDIDAS P/ USUÁRIO",measure_path(current_user.id)%></li>
+                                    <% end %>
+                                    <li><%= link_to "MEDIDAS",  measures_path %></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><%= link_to "REGISTRAR MEDIDA", new_measure_path %></li>
+                        <li><%= link_to "REGISTRAR NOVA MEDIDA", new_current_measure_path %></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a>CONFIG.</a>
+                <div class="submenu">
+                    <ul>
+                        <li>
+                            <% if !current_user.nil? %>
+                            <%   if current_user.email.include? "@admin.com"%>
+                            <%=     link_to "ADICIONAR ROTINA", new_routine_path, class: "navbar-item"  %>
+                            <%   end %>
+                            <% end %>
+                        </li>
+                        <li><%= link_to "LOGIN", new_user_session_path %></li>
+                        <li><%= link_to "LOGOUT",destroy_user_session_path, 'data-turbo-method': :delete %></a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a>SOBRE</a>
+                <div class="submenu">
+                    <ul>
+                        <li><%= link_to "CONHEÇA O PROJETO", pages_sobre_path %></li>
+                        <li><%= link_to "REGRAS", pages_regras_path %></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</div>

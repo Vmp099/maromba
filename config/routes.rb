@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   get 'trainings/routine'
   get 'trainings/:user_id/user' => 'trainings#user', as: 'training_user'
   get 'trainings/routine' => 'trainings#routine', as: 'training_routine'
+  get '/trainings/:id/edit' => 'trainings#edit'
+  post '/trainings/:id/edit' => 'trainings#update'
+  get '/pages/sobre' =>  'sobre'
+  get '/pages/regras' =>  'regras'
+  get '/users/passwords/new' => 'users#new', as: 'forgot_password'
 
 
   resources :trainings

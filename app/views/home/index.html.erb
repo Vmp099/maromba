@@ -1,8 +1,49 @@
-Rafael 9b gay
+<!DOCTYPE html>
+<% phrase = {1 => "TESTE", 2 => "NANDO GAY" }  %>
+<% i = rand(1..2) %>
+<html class="html">
+    <%= stylesheet_link_tag "index", "data-turbo-track": "reload" %>
+    <body class="body">
+        <form>
+            <section id="content">
+                <h3>Ola,</h3>
+                <p>Bem vindo a interface do nosso site! Por enquanto está em construção, porém estamos trabalhando duro para podermos entregar o mais rapido que der!</p>
 
+                <h3>Estamos trabalhando em:</h3>
+                <ul>
+                <li>Sites internos</li>
+                <li>Criação do banco de dados</li>
+                <li>Padronização do site</li>
+                <li>Sistema de login</li>
+                <li>Interação interna</li>
+                </ul>
 
+                <h3>Contato</h3>
+                <p>Caso encontrar alguem erro, considere enviar uma reclamação para nós! Segue formulário a baixo. NÃO ESTA FUNFANDO AINDA!!!!</p>
+                <h3>FRASE DO DIA:</h3>
+                <p><%= phrase[i] %></p>
+            </section>
+        </form>
 
-<p>Site está cru por motivos de Nando transa com o bumbum</p>
+        <form id="form1">
+            <section class="section2">
+                <input type="text" id="name" placeholder="Nome">
+                <span id="nameError" class="error"></span>
 
-<p>Login ta na aba settings</p>
-<p>Não esqueçam de criar a conta antes, sei q vcs são burros nesse nível S2</p>
+                <input type="email" id="email" placeholder="Email">
+                <span id="emailError" class="error"></span>
+
+                <textarea id="message" placeholder="Erro"></textarea>
+                <span id="messageError" class="error"></span>
+
+                <button type="button" onclick="enviarFormulario()">Enviar</button>
+            </section>
+        </form>
+
+        <footer>
+            <p>&copy; 2023 Olympia Tribess. Todos os direitos reservados.</p>
+        </footer>
+
+        <%= javascript_include_tag('index_js.js') %>
+    </body>
+</html>

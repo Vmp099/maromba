@@ -19,9 +19,6 @@
       <% @current_measure.each do |w| %>
       <td><%= w.measure_new %></td>
       <% end %>
-      <% if @user_name == current_user %>
-      <td><%= link_to "Alterar Medida", root_path %>
-      <% end %>
     </tr>
     <% end %>
   </tbody>
