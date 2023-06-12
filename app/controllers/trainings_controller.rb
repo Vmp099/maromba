@@ -5,16 +5,33 @@ class TrainingsController < ApplicationController
   def index
     @trainings = Training.all
     @current_weigth = Weigth.order(created_at: :desc)
+    @training_id = Training.order(created_at: :desc).last
+    @length_weigth = 0
+    Weigth.where(training_id: @training_id.id).each do
+      @length_weigth += 1
+    end
   end
 
   def show
     @training = Training.where(user_id: current_user).map
     @current_weigth = Weigth.order(created_at: :desc)
+    @training_id = Training.order(created_at: :desc).last
+    @length_weigth = 0
+    Weigth.where(training_id: @training_id.id).each do
+      @length_weigth += 1
+    end
   end
 
   def user
-    @training = Training.where(user_id: current_user).map
+    @training = Training.where(user_id: current_user.id)
     @current_weigth = Weigth.order(created_at: :desc)
+    @training_id = Training.order(created_at: :desc).last
+    @length_weigth = 0
+    if @current_weigth.nil?
+        Weigth.where(training_id: @training_id.id).each do
+        @length_weigth += 1
+      end
+    end
   end
 
   def new
@@ -53,7 +70,6 @@ class TrainingsController < ApplicationController
   end
 
   def update
-    byebug
     @training = Training.find(params[:id])
     respond_to do |format|
       if @training.update(edit_params)
@@ -72,9 +88,9 @@ class TrainingsController < ApplicationController
   # DELETE /companies/1 or /companies/1.json
   def destroy
     @training = Training.find(params[:id])
-    @weigth = Weigth.find_by(training_id: @training.id)
+    @weigth = Weigth.all
     respond_to do |format|
-      @weigth.destroy if !@weigth.nil?
+        @weigth.destroy_by(training_id: @training.id) if !@weigth.nil?
       @training.destroy
       format.html { redirect_to training_user_path(current_user.id), notice: "Treino deletado com sucesso!" }
       format.json { head :no_content }

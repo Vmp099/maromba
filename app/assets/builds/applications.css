@@ -126,7 +126,7 @@
   }
 
   nav ul li:hover .submenu ul li:hover{
-    background-color: white;
+    background-color: rgb(60, 57, 57);
   }
 
   /* Sub menu do sub menu */
@@ -381,4 +381,88 @@ p{
 
 .links{
 color: #00aff4;
+}
+
+
+select_form {
+  padding: 2px 16px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 400;
+  width: 100%;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  color: #dcdeee;
+  margin-top: 13px;
+  appearance: none;
+  background-color: #202225;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  line-height: inherit;
+  z-index: 1;
+  outline: none;
+}
+
+.select_form {
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+  position: relative;
+  width: 100%;
+  border: 1px solid var(--select-border);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: #202225;
+  color: #dcdeee;
+}
+.select_form select_form,
+.select_form::after {
+  grid-area: select;
+}
+.select_form:not(.select--multiple)::after {
+  content: "";
+  justify-self: end;
+  background-color: #202225;
+  color: #dcdeee;
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+select_form:focus + .focus {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 2px solid var(--select-focus);
+  border-radius: inherit;
+}
+
+
+/* Tabelas */
+
+.tabelas_treino {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tabelas_treino td, .tabelas_treino th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.tabelas_treino tr:nth-child(even){background-color: #f2f2f2;}
+
+.tabelas_treino tr:hover {background-color: #ddd;}
+
+.tabelas_treino th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #292929;
+  color: white;
 }

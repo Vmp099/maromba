@@ -1,14 +1,25 @@
-<%= form_for @measure do |form| %>
-    <div class="field">
-      <%= form.label :name_muscle, "Área", class: "label" %>
-      <%= form.text_field :name_muscle, step: :any %>
+<!DOCTYPE html>
+<html>
+  <body>
+    <div class="form">
+      <%= form_for @measure do |form| %>
+        <div class="box-form">
+          <div class="form-content">
+            <h3 class="titulo">Adicionar Medida</h3>
+            <div class="form-input">
+              <label for="name_muscle"> Músculo <span>*</span></label>
+              <%= form.text_field :name_muscle, step: :any, autofocus: true, autocomplete: "name_muscle", class:'form_login' %>
+            </div>
+            <div class="form-input">
+                <label for="new_measure"> Medida <span>*</span></label>
+                <%= form.number_field :new_measure, step: :any, autofocus: true, autocomplete: "weigth", class:'form_login'%>
+            </div>
+            <%= form.hidden_field :user_id, value: current_user.id.to_i %>
+            <div class="actions">
+              <%= form.submit 'Salvar', class:'button_login' %>
+            </div>
+        </div>
+      <% end %>
     </div>
-    <div class="field">
-      <%= form.label :new_measure, "Medida", class: "label" %>
-      <%= form.number_field :new_measure, step: :any %>
-    </div>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-    <div class="field">
-      <%= form.submit "Salvar", class: "button is-link" %>
-    </div>
-<% end %>
+  </body>
+</html>

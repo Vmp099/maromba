@@ -1,14 +1,24 @@
-<%= form_for :weigth, url: weigths_path do |form| %>
-    <div class="field">
-        <%= form.label :training_id, "Treino:", class: "label" %>
-        <%= form.select(:training_id, Training.all.map { |v| [ v.name_training, v.id ] }) %>
+<!DOCTYPE html>
+<html>
+  <body>
+    <div class="form">
+      <%= form_for :weigth, url: weigths_path do |form| %>
+        <div class="box-form">
+          <div class="form-content">
+            <h3 class="titulo">Adicionar Novo Peso</h3>
+            <div class="form-input">
+              <label for="training_id"> Treino <span>*</span></label>
+              <%= form.select(:training_id, Training.all.map { |v| [ v.name_training, v.id ] },{}, {class:'select_form'}) %>
+            </div>
+            <div class="form-input">
+                <label for="weigth"> Peso <span>*</span></label>
+                <%= form.number_field :weigth, autofocus: true, autocomplete: "weigth", class:'form_login' %>
+            </div>
+            <div class="actions">
+              <%= form.submit 'Salvar', class:'button_login' %>
+            </div>
+        </div>
+      <% end %>
     </div>
-
-    <div class="field">
-      <%= form.label :weigth, "Peso", class: "label" %>
-      <%= form.number_field :weigth, step: :any %>
-    </div>
-    <div class="field">
-      <%= form.submit "Salvar", class: "button is-link" %>
-    </div>
-<% end %>
+  </body>
+</html>

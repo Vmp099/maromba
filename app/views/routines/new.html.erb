@@ -1,8 +1,20 @@
-<%= form_for :routine, url: routines_path do |form| %>
-    <div class="field">
-      <%= form.label :routine_select, "Rotina", class: "label" %>
-      <%= form.text_field :routine_select, step: :any %>
+<!DOCTYPE html>
+<html>
+  <body>
+    <div class="form">
+      <%= form_for :routine, url: routines_path do |form| %>
+        <div class="box-form">
+          <div class="form-content">
+            <h3 class="titulo">Nova Rotina </h3>
+            <div class="form-input">
+                <label for="routine_select"> Adicionar Rotina <span>*</span></label>
+                <%= form.text_field :routine_select, autofocus: true, autocomplete: "routine_select", class:'form_login' %>
+            </div>
+            <div class="actions">
+              <%= form.submit 'Salvar', class:'button_login' %>
+            </div>
+        </div>
+      <% end %>
     </div>
-      <%= form.submit "Salvar", class: "button is-link" %>
-    </div>
-<% end %>
+  </body>
+</html>

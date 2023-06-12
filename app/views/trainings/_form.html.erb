@@ -1,27 +1,30 @@
-<%= form_for :training, url: trainings_path do |form| %>
-  <div class="navbar-item has-dropdown is-hoverable">
-    <div class="field">
-        <p class="input navbar-link" disabled=true><%= @routine.routine_select %></p>
+<!DOCTYPE html>
+<html>
+  <body>
+    <div class="form">
+      <%= form_for :training, url: trainings_path do |form| %>
+        <div class="box-form">
+          <div class="form-content">
+            <h3 class="titulo">Adicionar Novo Peso</h3>
+            <p class="subtitulo"><%= @routine.routine_select %></p>
+            <% @i.times do %>
+
+              <div class="form-input">
+                <label for="name_training"> Treino <span>*</span></label>
+                <%= form.text_field :name_training, autofocus: true, autocomplete: "name_training", class:'form_login', :multiple => true %>
+              </div>
+              <div class="form-input">
+                  <label for="weigth"> Peso <span>*</span></label>
+                  <%= form.number_field :weigth, step: :any, autofocus: true, autocomplete: "weigth", class:'form_login', :multiple => true %>
+              </div>
+            <% end %>
+            <%= form.hidden_field :user_id, value: current_user.id.to_i %>
+            <%= form.hidden_field :routine_id, value: @routine.id.to_i %>
+            <div class="actions">
+              <%= form.submit 'Salvar', class:'button_login' %>
+            </div>
+        </div>
+      <% end %>
     </div>
-    <div class="navbar-dropdown">
-
-      <% @i.times do %>
-
-          <div class="field">
-            <%= form.label :name_training, "Treino", class: "label" %>
-            <%= form.text_field :name_training, class: "input",:multiple => true %>
-          </div>
-
-          <div class="field">
-            <%= form.label :weigth, "Peso", class: "label" %>
-            <%= form.number_field :weigth, step: :any, :multiple => true %>
-          </div>
-        <% end %>
-        <%= form.hidden_field :user_id, value: current_user.id.to_i %>
-        <%= form.hidden_field :routine_id, value: @routine.id.to_i %>
-      <div class="field">
-        <%= form.submit "Salvar", class: "button is-link" %>
-      </div>
-    </div>
-  </div>
-<% end %>
+  </body>
+</html>

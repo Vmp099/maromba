@@ -37,9 +37,10 @@ class MeasuresController < ApplicationController
 
   def destroy
     @measure = Measure.find(params[:id])
-    @current_measure = CurrentMeasure.find_by(measure_id: @measure.id)
+    @current_measure = CurrentMeasure.all
     respond_to do |format|
-      @current_measure.destroy if !@current_measure.nil?
+        @current_measure.destroy_by(measure_id: @measure.id) if !@current_measure.nil?
+
       @measure.destroy
       format.html { redirect_to measure_path(current_user.id), notice: "Medida deletada com sucesso!" }
       format.json { head :no_content }
