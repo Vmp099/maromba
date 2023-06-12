@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/pages/sobre' =>  'sobre'
   get '/pages/regras' =>  'regras'
   get '/users/passwords/new' => 'users#new', as: 'forgot_password'
+  delete '/users/registrations/:id/delete' => 'users#destroy', as: 'delete_user'
 
 
   resources :trainings
