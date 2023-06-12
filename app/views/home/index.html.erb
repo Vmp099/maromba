@@ -2,7 +2,7 @@
 <% phrase = {1 => "TESTE", 2 => "NANDO GAY" }  %>
 <% i = rand(1..2) %>
 <html class="html">
-    <%= stylesheet_link_tag "index", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <body class="body">
         <form>
             <section id="content">
@@ -44,6 +44,6 @@
             <p>&copy; 2023 Olympia Tribess. Todos os direitos reservados.</p>
         </footer>
 
-        <%= javascript_include_tag('index_js.js') %>
+        <%= javascript_include_tag('application.js') %>
     </body>
 </html>
