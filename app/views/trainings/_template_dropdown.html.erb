@@ -1,0 +1,59 @@
+<h2 class="title is-4">Treinos</h2>
+<%= render "search_form"%>
+<% @user_finder.each do |s|%>
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn"><%= sort_link(@q, :name_training, s.username, default_order: :asc, class:"links-form") %></button>
+    <div id="myDropdown" class="dropdown-content">
+    <table class="tabelas_treino">
+      <thead>
+        <th>Frango</th>
+        <th>Treino</th>
+        <th>Peso Atual</th>
+        <% @length_weigth.times do %>
+          <th>Pesos Anteriores</th>
+        <% end %>
+      </thead>
+      <tbody>
+        <% @trainings.each do |t| %>
+          <%  @user_name = User.find(t.user_id) %>
+          <tr>
+            <td><%= @user_name.username %></td>
+            <td><%= t.name_training %></td>
+            <td><%= t.weigth %></td>
+            <% @counting = 0 %>
+            <% @current_weigth.where(training_id: t.id).each do |w| %>
+              <td><%= w.weigth %></td>
+              <% @counting += 1 %>
+            <% end %>
+            <% i = @length_weigth - @counting %>
+            <%i.times do %>
+              <td>N/A</td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+  </div>
+<% end %>
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>

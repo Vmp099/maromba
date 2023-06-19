@@ -3,7 +3,9 @@ class TrainingsController < ApplicationController
   before_action :routine, only: [:new]
 
   def index
-    @trainings = Training.all
+    @q = User.ransack(params[:query])
+    @user_finder = @q.result
+    @trainings  = Training.all
     @current_weigth = Weigth.order(created_at: :desc)
     @training_id = Training.order(created_at: :desc).last
     @length_weigth = 0

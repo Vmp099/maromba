@@ -1,7 +1,9 @@
 class MeasuresController < ApplicationController
 
   def index
-    @measures = Measure.order(user_id: :desc)
+    @q = User.ransack(params[:query])
+    @user_finder = @q.result
+    @measures  = Measure.all
     @current_measure = CurrentMeasure.order(created_at: :desc)
   end
   def show
