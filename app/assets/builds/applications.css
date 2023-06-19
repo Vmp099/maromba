@@ -511,3 +511,20 @@ select_form:focus + .focus {
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
+
+
+.button-looper{
+  height: 40px;
+  width: 100%;
+  padding: 2px 16px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: #5865f2;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-decoration: none;
+}

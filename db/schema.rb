@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_05_164922) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_29_120425) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,20 +37,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_164922) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "routines", force: :cascade do |t|
-    t.string "routine_select"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "trainings", force: :cascade do |t|
     t.string "name_training"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "weigth"
-    t.bigint "routine_id", null: false
-    t.index ["routine_id"], name: "index_trainings_on_routine_id"
     t.index ["user_id"], name: "index_trainings_on_user_id"
   end
 
@@ -78,7 +70,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_164922) do
 
   add_foreign_key "current_measures", "measures"
   add_foreign_key "measures", "users"
-  add_foreign_key "trainings", "routines"
   add_foreign_key "trainings", "users"
   add_foreign_key "weigths", "trainings"
 end

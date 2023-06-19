@@ -2,24 +2,20 @@
 <html>
   <body>
     <div class="form">
-      <%= form_for :training, url: trainings_path do |form| %>
+      <%= form_for @training do |form| %>
         <div class="box-form">
           <div class="form-content">
             <h3 class="titulo">Adicionar Novo Peso</h3>
-            <p class="subtitulo"><%= @routine.routine_select %></p>
-            <% @i.times do %>
 
               <div class="form-input">
                 <label for="name_training"> Treino <span>*</span></label>
-                <%= form.text_field :name_training, autofocus: true, autocomplete: "name_training", class:'form_login', :multiple => true %>
+                <%= form.text_field :name_training, autofocus: true, autocomplete: "name_training", class:'form_login' %>
               </div>
               <div class="form-input">
                   <label for="weigth"> Peso <span>*</span></label>
-                  <%= form.number_field :weigth, step: :any, autofocus: true, autocomplete: "weigth", class:'form_login', :multiple => true %>
+                  <%= form.number_field :weigth, step: :any, autofocus: true, autocomplete: "weigth", class:'form_login' %>
               </div>
-            <% end %>
             <%= form.hidden_field :user_id, value: current_user.id.to_i %>
-            <%= form.hidden_field :routine_id, value: @routine.id.to_i %>
             <div class="actions">
               <%= form.submit 'Salvar', class:'button_login' %>
             </div>

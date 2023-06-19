@@ -1,2 +1,0 @@
-class Routine < ApplicationRecord
-end

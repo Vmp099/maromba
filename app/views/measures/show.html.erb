@@ -1,27 +1,27 @@
-<h2 class="title is-4">Treinos</h2>
-<table class="tabelas_treino">
-  <thead>
-    <th>Frango:</th>
-    <th>Área:</th>
-    <th>Medida Atual:</th>
-    <% @current_measure.each do %>
-    <th>Medidas Anteriores:</th>
-    <% end %>
-    <th>Editar:</th>
-    <th>Deletar:</th>
-  </thead>
-  <tbody>
-    <% @measures.each do |m| %>
-    <tr>
-      <td><%= current_user.username %></td>
-      <td><%= m.name_muscle %></td>
-      <td><%= m.new_measure %></td>
-      <% @current_measure.each do |w| %>
-      <td><%= w.measure_new %></td>
-      <% end %>
-      <td> <%= link_to "Editar Peso", edit_measure_url(m.id), class: "is-pulled-right" %></td>
-      <td> <%= link_to 'Delete', measures_delete_path(m.id), method: :delete %> </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<!DOCTYPE html>
+<html class="html">
+    <%= stylesheet_link_tag "applications", "data-turbo-track": "reload" %>
+    <body class="body">
+        <form>
+            <section id="content">
+                <h3>Wtf</h3>
+                <p>O que krls tu ta fznd aqui???????</p>
+
+                <h3>Bom, já q tu ta aqui,  veja: </h3>
+                <ul>
+                <li><%= link_to "Rafael de bikini", "https://www.youtube.com/watch?v=dQw4w9WgXcQ" %></li>
+                <li><%= link_to "Big Hard Paul", "https://www.youtube.com/@paulodurao9426" %></li>
+                <li><%= link_to "Como mandar felipe e ollie", "https://www.youtube.com/watch?v=0nCyevYbtM8" %></li>
+                </ul>
+                <h3>FRASE DO DIA:</h3>
+                <p>NANDO GAY</p>
+            </section>
+        </form>
+
+        <footer>
+            <p>&copy; 2023 Olympia Tribess. Todos os direitos reservados.</p>
+        </footer>
+
+        <%= javascript_include_tag('application.js') %>
+    </body>
+</html>

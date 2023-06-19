@@ -8,6 +8,10 @@
     <% @length_weigth.times do %>
       <th>Pesos Anteriores</th>
     <% end %>
+    <% if !current_user.nil? %>
+      <th>Alterar Ultimo Peso</th>
+      <th>Deletar Treino</th>
+    <% end %>
   </thead>
   <tbody>
     <% @user_finder.each do |u| %>
@@ -26,6 +30,13 @@
           <% i = @length_weigth - @counting %>
           <%i.times do %>
             <td>N/A</td>
+          <% end %>
+          <% if current_user.username == @user_name %>
+            <td> <%= link_to "Editar", edit_training_path(t.id) %> </td>
+            <td> <%= link_to "Deletar",trainings_delete_path(t.id) %> </td>
+          <% else %>
+            <td>Não é seu usuário!</td>
+            <td>Não é seu usuário!</td>
           <% end %>
         </tr>
       <% end %>

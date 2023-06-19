@@ -7,8 +7,6 @@ class MeasuresController < ApplicationController
     @current_measure = CurrentMeasure.order(created_at: :desc)
   end
   def show
-    @measures = Measure.where(user_id: current_user.id).map
-    @current_measure = CurrentMeasure.order(created_at: :desc)
   end
 
   def new
@@ -23,7 +21,7 @@ class MeasuresController < ApplicationController
     @measure = Measure.find(params[:id])
     respond_to do |format|
       if @measure.update(measure_params)
-        format.html { redirect_to measure_path(current_user.id), notice: "Medida modificada com sucesso!" }
+        format.html { redirect_to measures_path, notice: "Medida modificada com sucesso!" }
         format.json { render :show, status: :ok, location: @measure }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -44,7 +42,7 @@ class MeasuresController < ApplicationController
         @current_measure.destroy_by(measure_id: @measure.id) if !@current_measure.nil?
 
       @measure.destroy
-      format.html { redirect_to measure_path(current_user.id), notice: "Medida deletada com sucesso!" }
+      format.html { redirect_to measures_path, notice: "Medida deletada com sucesso!" }
       format.json { head :no_content }
     end
   end
@@ -54,7 +52,7 @@ class MeasuresController < ApplicationController
 
     respond_to do |format|
       if @measure.save
-        format.html { redirect_to measures_url}
+        format.html { redirect_to measures_looper_url}
         format.json { render :show, status: :created, location: @measure }
       else
         format.html { render :new, status: :unprocessable_entity }

@@ -9,13 +9,16 @@
 
 <table class="tabelas_treino">
   <thead>
-    <th>Frango:</th>
-    <th>Área:</th>
-    <th>Medida Atual:</th>
+    <th>Frango</th>
+    <th>Área</th>
+    <th>Medida Atual</th>
     <% @current_measure.each do %>
-    <th>Medidas Anteriores:</th>
+    <th>Medidas Anteriores</th>
     <% end %>
-    <th>Alterar Ultima Medida:</th>
+    <% if !current_user.nil? %>
+      <th>Alterar Ultima Medida</th>
+      <th>Deletar Medida</th>
+    <% end %>
   </thead>
   <tbody>
     <% @user_finder.each do |u| %>
@@ -28,6 +31,13 @@
           <td><%= m.new_measure %></td>
           <% @current_measure.each do |w| %>
           <td><%= w.measure_new %></td>
+          <% end %>
+          <% if current_user.username == @user_name %>
+            <td> <%= link_to "Editar", edit_measure_path(m.id) %> </td>
+            <td> <%= link_to "Deletar", measures_delete_path(m.id) %> </td>
+          <% else %>
+            <td>Não é seu usuário!</td>
+            <td>Não é seu usuário!</td>
           <% end %>
         </tr>
       <% end %>
