@@ -1,9 +1,11 @@
 class TrainingsController < ApplicationController
   before_action :authenticate_user!
+  require 'will_paginate/array'
 
   def index
     @q = User.ransack(params[:query])
     @user_finder = @q.result
+    @user_finder = @user_finder.paginate(page: params[:page], per_page: 10).order('username asc')
     @trainings  = Training.all
     @current_weigth = Weigth.order(created_at: :desc)
     @training_id = Training.order(created_at: :desc).last

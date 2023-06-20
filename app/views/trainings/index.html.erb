@@ -4,9 +4,12 @@
   <body class="body">
     <%= render "search_form"%>
     <div class= "center-table">
+      <ul class="digg_pagination">
+        <%= will_paginate(@user_finder)%>
+      </ul>
       <table class="styled-table">
         <thead>
-          <th>Frango</th>
+          <th><%= sort_link(@q, :username, "Frango", default_order: :asc, class:"links-form")%></th>
           <th>Treino</th>
           <th>Peso Atual</th>
           <% @length_weigth.times do %>

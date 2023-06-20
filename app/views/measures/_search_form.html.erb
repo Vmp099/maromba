@@ -1,0 +1,6 @@
+<%= search_form_for(@q, url: "/measures", method: :get) do |f| %>
+          <div class="container-search">
+              <%= f.search_field :username_cont, class: "field", :placeholder => "Nome do Usuário..." %>
+              <%= image_submit_tag("search.png", class: "button-search") %>
+          </div>
+      <% end %>

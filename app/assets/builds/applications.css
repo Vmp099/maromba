@@ -587,3 +587,103 @@ select_form:focus + .focus {
   align-items: center;
   text-decoration: none;
 }
+
+
+/* pagination */
+
+.digg_pagination {
+  background: #999999;
+  cursor: default;
+  display: flex;
+  justify-content: center;
+  width: 15%;
+  /* self-clearing method: */ }
+  .digg_pagination a, .digg_pagination span, .digg_pagination em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px; }
+  .digg_pagination .disabled {
+    color: #999999;
+    border: 1px solid #dddddd; }
+  .digg_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #202020;
+    color: white;
+    border: 1px solid #202020; }
+  .digg_pagination a {
+    text-decoration: none;
+    color: #202020;
+    border: 1px solid #8d8d8d; }
+    .digg_pagination a:hover, .digg_pagination a:focus {
+      color: #8d8d8d;
+      border-color: #8d8d8d; }
+  .digg_pagination .page_info {
+    background: #202020;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center; }
+    .digg_pagination .page_info b {
+      color: #8d8d8d;
+      background: #8d8d8d;
+      padding: 0.1em 0.25em; }
+  .digg_pagination:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+  * html .digg_pagination {
+    height: 1%; }
+  *:first-child + html .digg_pagination {
+    overflow: hidden;
+}.digg_pagination {
+  background: white;
+  cursor: default;
+  /* self-clearing method: */ }
+  .digg_pagination a, .digg_pagination span, .digg_pagination em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px; }
+  .digg_pagination .disabled {
+    color: #999999;
+    border: 1px solid #dddddd; }
+  .digg_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #202020;
+    color: white;
+    border: 1px solid #202020; }
+  .digg_pagination a {
+    text-decoration: none;
+    color: #202020;
+    border: 1px solid #8d8d8d; }
+    .digg_pagination a:hover, .digg_pagination a:focus {
+      color: #8d8d8d;
+      border-color: #8d8d8d; }
+  .digg_pagination .page_info {
+    background: #202020;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center; }
+    .digg_pagination .page_info b {
+      color: #8d8d8d;
+      background: #202020;
+      padding: 0.1em 0.25em; }
+  .digg_pagination:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+  * html .digg_pagination {
+    height: 1%; }
+  *:first-child + html .digg_pagination {
+    overflow: hidden;
+}

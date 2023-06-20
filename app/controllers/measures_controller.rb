@@ -2,7 +2,7 @@ class MeasuresController < ApplicationController
 
   def index
     @q = User.ransack(params[:query])
-    @user_finder = @q.result
+    @user_finder = @q.result.paginate(page: params[:page], per_page: 10).order('username asc')
     @measures  = Measure.all
     @current_measure = CurrentMeasure.order(created_at: :desc)
   end

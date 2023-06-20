@@ -3,13 +3,11 @@
   <%= stylesheet_link_tag "applications", "data-turbo-track": "reload" %>
   <body class="body">
     <br>
-      <%= search_form_for(@q, url: "/measures", method: :get) do |f| %>
-          <div class="container-search">
-              <%= f.search_field :username_cont, class: "field", :placeholder => "Nome do Usuário..." %>
-              <%= image_submit_tag("search.png", class: "button-search") %>
-          </div>
-      <% end %>
+      <%= render "search_form" %>
     <div class="center-table">
+        <ul class="digg_pagination">
+          <%= will_paginate(@user_finder)%>
+        </ul>
       <table class="styled-table">
         <thead>
           <th>Frango</th>
