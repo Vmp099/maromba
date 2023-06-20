@@ -1,5 +1,8 @@
-<%= search_form_for(@q, url: "/trainings", method: :get) do |f| %>
-    <%= f.label :username_cont %>
-    <%= f.search_field :username_cont %>
-    <%= f.submit %>
-<% end %>
+<br>
+<%= stylesheet_link_tag "applications", "data-turbo-track": "reload" %>
+    <%= search_form_for(@q, url: "/trainings", method: :get) do |f| %>
+        <div class="container-search">
+            <%= f.search_field :username_cont, class: "field", :placeholder => "Nome do Usuário..." %>
+            <%= image_submit_tag("search.png", class: "button-search") %>
+        </div>
+    <% end %>

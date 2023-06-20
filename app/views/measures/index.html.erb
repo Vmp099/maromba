@@ -1,46 +1,52 @@
-<h2 class="title is-4">Treinos</h2>
-
-<%= search_form_for(@q, url: "/measures", method: :get) do |f| %>
-    <%= f.label :username_cont %>
-    <%= f.search_field :username_cont %>
-    <%= f.submit %>
-<% end %>
-
-
-<table class="tabelas_treino">
-  <thead>
-    <th>Frango</th>
-    <th>Área</th>
-    <th>Medida Atual</th>
-    <% @current_measure.each do %>
-    <th>Medidas Anteriores</th>
-    <% end %>
-    <% if !current_user.nil? %>
-      <th>Alterar Ultima Medida</th>
-      <th>Deletar Medida</th>
-    <% end %>
-  </thead>
-  <tbody>
-    <% @user_finder.each do |u| %>
-      <% @user_finder = Measure.where(user_id: u.id ) %>
-      <% @user_finder.each do |m| %>
-        <% @user_name = User.find(m.user_id).username %>
-        <tr>
-          <td><%= @user_name %></td>
-          <td><%= m.name_muscle %></td>
-          <td><%= m.new_measure %></td>
-          <% @current_measure.each do |w| %>
-          <td><%= w.measure_new %></td>
-          <% end %>
-          <% if current_user.username == @user_name %>
-            <td> <%= link_to "Editar", edit_measure_path(m.id) %> </td>
-            <td> <%= link_to "Deletar", measures_delete_path(m.id) %> </td>
-          <% else %>
-            <td>Não é seu usuário!</td>
-            <td>Não é seu usuário!</td>
-          <% end %>
-        </tr>
+<!DOCTYPE html>
+<html class="html">
+  <%= stylesheet_link_tag "applications", "data-turbo-track": "reload" %>
+  <body class="body">
+    <br>
+      <%= search_form_for(@q, url: "/measures", method: :get) do |f| %>
+          <div class="container-search">
+              <%= f.search_field :username_cont, class: "field", :placeholder => "Nome do Usuário..." %>
+              <%= image_submit_tag("search.png", class: "button-search") %>
+          </div>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
+    <div class="center-table">
+      <table class="styled-table">
+        <thead>
+          <th>Frango</th>
+          <th>Área</th>
+          <th>Medida Atual</th>
+          <% @current_measure.each do %>
+          <th>Medidas Anteriores</th>
+          <% end %>
+          <% if !current_user.nil? %>
+            <th>Alterar Ultima Medida</th>
+            <th>Deletar Medida</th>
+          <% end %>
+        </thead>
+        <tbody class="tbody-form">
+          <% @user_finder.each do |u| %>
+            <% @user_finder = Measure.where(user_id: u.id ) %>
+            <% @user_finder.each do |m| %>
+              <% @user_name = User.find(m.user_id).username %>
+              <tr>
+                <td><%= @user_name %></td>
+                <td><%= m.name_muscle %></td>
+                <td><%= m.new_measure %></td>
+                <% @current_measure.each do |w| %>
+                <td><%= w.measure_new %></td>
+                <% end %>
+                <% if current_user.username == @user_name %>
+                  <td> <%= link_to "Editar", edit_measure_path(m.id) %> </td>
+                  <td> <%= link_to "Deletar", measures_delete_path(m.id) %> </td>
+                <% else %>
+                  <td>Não é seu usuário!</td>
+                  <td>Não é seu usuário!</td>
+                <% end %>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

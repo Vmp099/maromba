@@ -1,45 +1,52 @@
-<h2 class="title is-4">Treinos</h2>
-<%= render "search_form"%>
-<table class="tabelas_treino">
-  <thead>
-    <th>Frango</th>
-    <th>Treino</th>
-    <th>Peso Atual</th>
-    <% @length_weigth.times do %>
-      <th>Pesos Anteriores</th>
-    <% end %>
-    <% if !current_user.nil? %>
-      <th>Alterar Ultimo Peso</th>
-      <th>Deletar Treino</th>
-    <% end %>
-  </thead>
-  <tbody>
-    <% @user_finder.each do |u| %>
-      <% @user_finder = Training.where(user_id: u.id ) %>
-      <% @user_finder.each do |t| %>
-        <% @user_name = User.find(t.user_id).username %>
-        <tr>
-          <td><%= @user_name %></td>
-          <td><%= t.name_training %></td>
-          <td><%= t.weigth %></td>
-          <% @counting = 0 %>
-          <% @current_weigth.where(training_id: t.id).each do |w| %>
-            <td><%= w.weigth %></td>
-            <% @counting += 1 %>
+<!DOCTYPE html>
+<html class="html">
+  <%= stylesheet_link_tag "applications", "data-turbo-track": "reload" %>
+  <body class="body">
+    <%= render "search_form"%>
+    <div class= "center-table">
+      <table class="styled-table">
+        <thead>
+          <th>Frango</th>
+          <th>Treino</th>
+          <th>Peso Atual</th>
+          <% @length_weigth.times do %>
+            <th>Pesos Anteriores</th>
           <% end %>
-          <% i = @length_weigth - @counting %>
-          <%i.times do %>
-            <td>N/A</td>
+          <% if !current_user.nil? %>
+            <th>Alterar Ultimo Peso</th>
+            <th>Deletar Treino</th>
           <% end %>
-          <% if current_user.username == @user_name %>
-            <td> <%= link_to "Editar", edit_training_path(t.id) %> </td>
-            <td> <%= link_to "Deletar",trainings_delete_path(t.id) %> </td>
-          <% else %>
-            <td>Não é seu usuário!</td>
-            <td>Não é seu usuário!</td>
+        </thead>
+        <tbody class="tbody-form">
+          <% @user_finder.each do |u| %>
+            <% @user_finder = Training.where(user_id: u.id ) %>
+            <% @user_finder.each do |t| %>
+              <% @user_name = User.find(t.user_id).username %>
+              <tr>
+                <td><%= @user_name %></td>
+                <td><%= t.name_training %></td>
+                <td><%= t.weigth %></td>
+                <% @counting = 0 %>
+                <% @current_weigth.where(training_id: t.id).each do |w| %>
+                  <td><%= w.weigth %></td>
+                  <% @counting += 1 %>
+                <% end %>
+                <% i = @length_weigth - @counting %>
+                <%i.times do %>
+                  <td>N/A</td>
+                <% end %>
+                <% if current_user.username == @user_name %>
+                  <td> <%= link_to "Editar", edit_training_path(t.id) %> </td>
+                  <td> <%= link_to "Deletar",trainings_delete_path(t.id) %> </td>
+                <% else %>
+                  <td>Não é seu usuário!</td>
+                  <td>Não é seu usuário!</td>
+                <% end %>
+              </tr>
+            <% end %>
           <% end %>
-        </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
