@@ -5,15 +5,15 @@
       <%= form_for @training do |form| %>
         <div class="box-form">
           <div class="form-content">
-            <h3 class="titulo">Adicionar Novo Peso</h3>
+            <h3 class="titulo">Adicionar Peso</h3>
 
               <div class="form-input">
                 <label for="name_training"> Treino <span>*</span></label>
-                <%= form.text_field :name_training, autofocus: true, autocomplete: "name_training", class:'form_login' %>
+                <%= form.text_field :name_training, autofocus: true, autocomplete: "name_training", class:'form_login', :required => true %>
               </div>
               <div class="form-input">
-                  <label for="weigth"> Peso <span>*</span></label>
-                  <%= form.number_field :weigth, step: :any, autofocus: true, autocomplete: "weigth", class:'form_login' %>
+                  <label for="weigth"> Peso (em Kg) <span>*</span></label>
+                  <%= form.number_field :weigth, step: :any, min: 1, autofocus: true, autocomplete: "weigth", class:'form_login', :required => true %>
               </div>
             <%= form.hidden_field :user_id, value: current_user.id.to_i %>
             <div class="actions">

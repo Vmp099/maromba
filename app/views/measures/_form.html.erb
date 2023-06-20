@@ -8,11 +8,11 @@
             <h3 class="titulo">Adicionar Medida</h3>
             <div class="form-input">
               <label for="name_muscle"> Músculo <span>*</span></label>
-              <%= form.text_field :name_muscle, step: :any, autofocus: true, autocomplete: "name_muscle", class:'form_login' %>
+              <%= form.text_field :name_muscle, step: :any, autofocus: true, autocomplete: "name_muscle", class:'form_login', :required => true %>
             </div>
             <div class="form-input">
-                <label for="new_measure"> Medida <span>*</span></label>
-                <%= form.number_field :new_measure, step: :any, autofocus: true, autocomplete: "weigth", class:'form_login'%>
+                <label for="new_measure"> Medida (em cm) <span>*</span></label>
+                <%= form.number_field :new_measure, step: :any, min: 1, autofocus: true, autocomplete: "weigth", class:'form_login', :required => true %>
             </div>
             <%= form.hidden_field :user_id, value: current_user.id.to_i %>
             <div class="actions">

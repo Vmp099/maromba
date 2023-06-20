@@ -2,8 +2,14 @@
   <div id="error_explanation" data-turbo-cache="false">
     <ul>
       <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li class="error"><%= message %></li>
       <% end %>
     </ul>
   </div>
+<% end %>
+
+<% if notice %>
+  <ul>
+    <li class="error"><%= notice %></li>
+  </ul>
 <% end %>

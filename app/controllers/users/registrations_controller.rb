@@ -10,9 +10,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   def create
+    begin
+     super
+    rescue Exception => e
+      if e.is_a? ActiveRecord::RecordNotUnique
+        redirect_back fallback_location: root_path,notice: "Nome de usuário já cadastrado!"
+      end
+    end
+   end
 
   # GET /resource/edit
   # def edit
